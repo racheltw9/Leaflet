@@ -1,0 +1,18 @@
+---
+title: "My Leaflet"
+output: html_document
+date: 11-15-2018
+---
+
+```{r}
+df = read.csv("worldcities.csv")
+library(leaflet)
+df %>% 
+        leaflet() %>%
+        addTiles() %>%
+        addMarkers(lat = df$lat, lng = df$lng, 
+                   popup = paste("<br>", "City:", df$city_ascii), 
+                   clusterOptions = markerClusterOptions()) 
+        
+```
+
